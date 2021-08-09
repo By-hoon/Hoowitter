@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { dbService } from "fBase";
 
-const Home = () => {
+const Home = ({ userObj }) => {
     const [hooweet, setHooweet] = useState("");
     const [hooweets, setHooweets] = useState([]);
     const getHooweets = async () => {
@@ -16,12 +16,20 @@ const Home = () => {
     }
     useEffect(() => {
         getHooweets();
+        dbService.collection("hooweets").onSnapshot(snapshot => {
+            const hooweetArray = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            setHooweets(hooweetArray);
+        });
     }, [])
     const onSubmit = async (event) => {
         event.preventDefault();
         await dbService.collection("hooweets").add({
-            hooweet,
+            text: hooweet,
             createdAt: Date.now(),
+            creatorId: userObj.uid,
         });
         setHooweet("");
     };
@@ -46,7 +54,7 @@ const Home = () => {
             <div>
                 {hooweets.map((hooweet) => (
                     <div key={hooweet.id}>
-                        <h4>{hooweet.Hooweet}</h4>
+                        <h4>{hooweet.text}</h4>
                     </div>
                 ))}
             </div>
