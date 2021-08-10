@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { dbService } from "fBase";
+import Hooweet from "components/Hooweet"
 
 const Home = ({ userObj }) => {
     const [hooweet, setHooweet] = useState("");
@@ -53,9 +54,9 @@ const Home = ({ userObj }) => {
             </form>
             <div>
                 {hooweets.map((hooweet) => (
-                    <div key={hooweet.id}>
-                        <h4>{hooweet.text}</h4>
-                    </div>
+                    <Hooweet key={hooweet.id}
+                        hooweetObj={hooweet}
+                        isOwner={hooweet.creatorId === userObj.uid} />
                 ))}
             </div>
         </div>
