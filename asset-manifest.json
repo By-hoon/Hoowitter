@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Hoowitter/static/css/main.b6e6e02b.chunk.css",
+    "main.css": "/Hoowitter/static/css/main.aafbda15.chunk.css",
     "main.js": "/Hoowitter/static/js/main.cabc3eb7.chunk.js",
     "main.js.map": "/Hoowitter/static/js/main.cabc3eb7.chunk.js.map",
     "runtime-main.js": "/Hoowitter/static/js/runtime-main.3d00eebb.js",
@@ -8,13 +8,13 @@
     "static/js/2.bc2d6514.chunk.js": "/Hoowitter/static/js/2.bc2d6514.chunk.js",
     "static/js/2.bc2d6514.chunk.js.map": "/Hoowitter/static/js/2.bc2d6514.chunk.js.map",
     "index.html": "/Hoowitter/index.html",
-    "static/css/main.b6e6e02b.chunk.css.map": "/Hoowitter/static/css/main.b6e6e02b.chunk.css.map",
+    "static/css/main.aafbda15.chunk.css.map": "/Hoowitter/static/css/main.aafbda15.chunk.css.map",
     "static/js/2.bc2d6514.chunk.js.LICENSE.txt": "/Hoowitter/static/js/2.bc2d6514.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3d00eebb.js",
     "static/js/2.bc2d6514.chunk.js",
-    "static/css/main.b6e6e02b.chunk.css",
+    "static/css/main.aafbda15.chunk.css",
     "static/js/main.cabc3eb7.chunk.js"
   ]
 }
