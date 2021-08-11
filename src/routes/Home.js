@@ -15,9 +15,9 @@ const Home = ({ userObj }) => {
         });
     }, []);
     return (
-        <div>
+        <div className="container">
             <HooweetFactory userObj={userObj} />
-            <div>
+            <div style={{ marginTop: 30 }}>
                 {hooweets.map((hooweet) => (
                     <Hooweet
                         key={hooweet.id}

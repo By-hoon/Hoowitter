@@ -1,5 +1,7 @@
 import { dbService, storageService } from "fBase";
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Hooweet = ({ hooweetObj, isOwner }) => {
     const [editing, setEditing] = useState(false);
@@ -26,10 +28,10 @@ const Hooweet = ({ hooweetObj, isOwner }) => {
         setNewHooweet(value);
     };
     return (
-        <div>
+        <div className="hooweet">
             {editing ? (
                 <>
-                    <form onSubmit={onSubmit}>
+                    <form onSubmit={onSubmit} className="container hooweetEdit">
                         <input
                             type="text"
                             placeholder="Edit your hooweet"
@@ -37,21 +39,25 @@ const Hooweet = ({ hooweetObj, isOwner }) => {
                             required
                             onChange={onChange}
                         />
-                        <input type="submit" value="Update Hooweet" />
+                        <input type="submit" value="Update Hooweet" className="formBtn" />
                     </form>
-                    <button onClick={toggleEditing}>Cancel</button>
+                    <span onClick={toggleEditing} className="formBtn cancelBtn">
+                        Cancel
+                    </span>
                 </>
             ) : (
                 <>
                     <h4>{hooweetObj.text}</h4>
-                    {hooweetObj.attachmentUrl && (
-                        <img src={hooweetObj.attachmentUrl} width="50px" height="50px" />
-                    )}
+                    {hooweetObj.attachmentUrl && <img src={hooweetObj.attachmentUrl} />}
                     {isOwner && (
-                        <>
-                            <button onClick={onDeleteClick}>Delete Hooweet</button>
-                            <button onClick={toggleEditing}>Edit Hooweet</button>
-                        </>
+                        <div class="hooweet__actions">
+                            <span onClick={onDeleteClick}>
+                                <FontAwesomeIcon icon={faTrash} />
+                            </span>
+                            <span onClick={toggleEditing}>
+                                <FontAwesomeIcon icon={faPencilAlt} />
+                            </span>
+                        </div>
                     )}
                 </>
             )}
