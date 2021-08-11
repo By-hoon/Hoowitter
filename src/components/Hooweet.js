@@ -1,4 +1,4 @@
-import { dbService } from "fBase";
+import { dbService, storageService } from "fBase";
 import React, { useState } from "react";
 
 const Hooweet = ({ hooweetObj, isOwner }) => {
@@ -8,6 +8,7 @@ const Hooweet = ({ hooweetObj, isOwner }) => {
         const ok = window.confirm("Are you sure you want to delete this hooweet?");
         if (ok) {
             await dbService.doc(`hooweets/${hooweetObj.id}`).delete();
+            await storageService.refFromURL(hooweetObj.attachmentUrl).delete();
         }
     };
     const toggleEditing = () => setEditing((prev) => !prev);
@@ -43,6 +44,9 @@ const Hooweet = ({ hooweetObj, isOwner }) => {
             ) : (
                 <>
                     <h4>{hooweetObj.text}</h4>
+                    {hooweetObj.attachmentUrl && (
+                        <img src={hooweetObj.attachmentUrl} width="50px" height="50px" />
+                    )}
                     {isOwner && (
                         <>
                             <button onClick={onDeleteClick}>Delete Hooweet</button>
